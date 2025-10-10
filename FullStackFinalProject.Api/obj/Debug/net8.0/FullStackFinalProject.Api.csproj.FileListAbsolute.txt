@@ -25,3 +25,4 @@ C:\Users\samif\Documents\FullStack Final  Project\FullStackFinalProject.Api\obj\
 C:\Users\samif\Documents\FullStack Final  Project\FullStackFinalProject.Api\obj\Debug\net8.0\FullStackFinalProject.Api.pdb
 C:\Users\samif\Documents\FullStack Final  Project\FullStackFinalProject.Api\obj\Debug\net8.0\FullStackFinalProject.Api.genruntimeconfig.cache
 C:\Users\samif\Documents\FullStack Final  Project\FullStackFinalProject.Api\obj\Debug\net8.0\ref\FullStackFinalProject.Api.dll
+C:\Users\samif\Documents\FullStack Final  Project\FullStackFinalProject.Api\obj\Debug\net8.0\FullStackFinalProject.Api.sourcelink.json
