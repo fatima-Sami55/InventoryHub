@@ -1,4 +1,4 @@
-# Reflection: Building InventoryHub with Microsoft Copilot
+# Reflection: Building InventoryHub
 
 Throughout this project, I used Microsoft Copilot as a coding assistant to develop and optimize the InventoryHub full-stack application.
 
