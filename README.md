@@ -1,18 +1,50 @@
-# Reflection: Building InventoryHub
+# InventoryHub
 
-Throughout this project, I used Microsoft Copilot as a coding assistant to develop and optimize the InventoryHub full-stack application.
+InventoryHub is a full-stack inventory management application built using **Blazor** for the front-end and **.NET Minimal API** for the back-end. This project emphasizes **secure coding**, **authentication & authorization**, and **robust debugging** practices.
 
-### Integration
-Copilot helped me generate initial integration code that connected the Blazor front-end to the Minimal API back-end. It suggested correct HTTP client syntax and improved readability.
+---
 
-### Debugging
-When integration issues appeared (wrong route, CORS, and malformed JSON), Copilot quickly pinpointed them and suggested precise fixes such as `app.UseCors(...)` and JSON deserialization error handling.
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Security Measures](#security-measures)
+- [Setup & Deployment](#setup--deployment)
+- [Testing](#testing)
+- [Reflection](#reflection)
+- [Repository](#repository)
 
-### JSON Structuring
-Copilot helped format the API response with nested JSON objects for category data. It also validated the output structure using Postman.
+---
 
-### Optimization
-Finally, Copilot suggested caching strategies and code refactoring to reduce redundant calls and improve app performance.
+## Overview
+InventoryHub helps users manage inventory items with categorized data, secure login, and role-based access. Microsoft Copilot was used throughout the development to generate integration code, handle debugging, and optimize performance.
 
-### Reflection
-This project taught me how to use Copilot effectively as a coding collaborator — not to rely on it blindly, but to use its suggestions critically. It sped up development, improved accuracy, and made debugging smoother.
+---
+
+## Features
+- **Secure Input Handling**: Input validation and SQL injection prevention.
+- **Authentication & Authorization**: Role-Based Access Control (RBAC) implemented.
+- **API Integration**: Blazor front-end consumes Minimal API endpoints.
+- **JSON Structuring**: Nested JSON responses for categories and items.
+- **Caching & Optimization**: Reduced redundant API calls for better performance.
+- **Testing**: Security and functionality verified using automated tests.
+
+---
+
+## Technologies Used
+- **Front-End**: Blazor WebAssembly  
+- **Back-End**: .NET 9 Minimal API  
+- **Database**: SQL Server / MSSQL  
+- **Tools**: Microsoft Copilot, Postman  
+- **Version Control**: Git & GitHub  
+
+---
+
+## Security Measures
+- Input validation on all forms.
+- Protection against SQL Injection.
+- Prevention of XSS vulnerabilities.
+- Role-based authentication and authorization for user access.
+- Debugging and vulnerability fixes assisted by Copilot.
+
+---

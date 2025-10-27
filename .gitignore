@@ -25,6 +25,7 @@ Release/
 # ------------------------
 # Blazor / Web / Frontend
 # ------------------------
+/FullStackFinalProject/wwwroot/
 wwwroot/_framework/
 wwwroot/**/*.blazor.boot.json
 wwwroot/**/*.blazor.boot.json.gz
