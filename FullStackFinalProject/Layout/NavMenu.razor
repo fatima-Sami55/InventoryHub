@@ -1,10 +1,47 @@
-﻿<nav class="navbar bg-light">
-    <ul class="nav">
-        <li class="nav-item">
-            <NavLink class="nav-link" href="/">Home</NavLink>
-        </li>
-        <li class="nav-item">
-            <NavLink class="nav-link" href="/fetchproducts">Products</NavLink>
-        </li>
-    </ul>
-</nav>
+﻿@inherits LayoutComponentBase
+@using FullStackFinalProject.Services
+@inject AuthService Auth
+@inject NavigationManager Nav
+
+<div class="navbar bg-dark text-white p-3 d-flex justify-content-between align-items-center">
+    <h3 class="m-0" style="cursor:pointer" @onclick='() => Nav.NavigateTo("/")'>
+        InventoryHub
+    </h3>
+
+    <div>
+        @if (Auth.IsLoggedIn)
+        {
+            <span class="me-3">👋 Hi, @Auth.Username</span>
+            <button class="btn btn-outline-light btn-sm" @onclick="Logout">Logout</button>
+        }
+        else
+        {
+            <a class="btn btn-outline-light btn-sm me-2" href="/login">Login</a>
+            <a class="btn btn-outline-light btn-sm" href="/register">Register</a>
+        }
+    </div>
+</div>
+
+<div class="container mt-4">
+    @Body
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        // Subscribe to Auth state change
+        Auth.OnAuthStateChanged += StateHasChanged;
+    }
+
+    private void Logout()
+    {
+        Auth.Logout();
+        Nav.NavigateTo("/login", forceLoad: true);
+    }
+
+    public void Dispose()
+    {
+        // Clean up event when component destroyed
+        Auth.OnAuthStateChanged -= StateHasChanged;
+    }
+}

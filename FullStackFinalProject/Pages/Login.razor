@@ -1,0 +1,45 @@
+@page "/login"
+@using FullStackFinalProject.Services
+@inject AuthService Auth
+@inject NavigationManager Nav
+
+<h3>Login</h3>
+
+<div class="card p-4 shadow-sm" style="max-width: 400px;">
+    <div class="mb-3">
+        <label>Email</label>
+        <input @bind="email" class="form-control" type="email" placeholder="Enter your email" />
+    </div>
+
+    <div class="mb-3">
+        <label>Password</label>
+        <input @bind="password" class="form-control" type="password" placeholder="Enter your password" />
+    </div>
+
+    <button class="btn btn-primary w-100" @onclick="HandleLogin">Login</button>
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger mt-3">@errorMessage</div>
+    }
+</div>
+
+@code {
+    private string email = "";
+    private string password = "";
+    private string? errorMessage;
+
+    private async Task HandleLogin()
+    {
+        bool success = await Auth.Login(email, password);
+
+        if (success)
+        {
+            Nav.NavigateTo("/fetchproducts");
+        }
+        else
+        {
+            errorMessage = "Invalid email or password!";
+        }
+    }
+}

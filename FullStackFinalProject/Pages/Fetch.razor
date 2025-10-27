@@ -1,27 +1,45 @@
 @page "/fetchproducts"
-@namespace FullStackFinalProject.Pages
+@using FullStackFinalProject.Services
 @inject HttpClient HttpClient
+@inject AuthService Auth
+@inject NavigationManager Nav
 
 <h3>Product List</h3>
 
-@if (products == null)
+@if (!Auth.IsLoggedIn)
 {
-    <p><em>Loading...</em></p>
+    <div class="alert alert-warning">
+        You must be logged in to view products.
+        <a href="/login" class="alert-link">Go to Login</a>
+    </div>
+}
+else if (Auth.Role != "Admin")
+{
+    <div class="alert alert-danger">
+        Only admins are allowed to view products.
+    </div>
+}
+else if (products == null)
+{
+    <p><em>Loading products...</em></p>
 }
 else
 {
-    <ul>
+    <div class="row">
         @foreach (var product in products)
         {
-            <li>
-                <strong>@product.Name</strong> - $@product.Price
-                <br />
-                Stock: @product.Stock
-                <br />
-                Category: @(product.Category?.Name ?? "N/A")
-            </li>
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">$@product.Price</p>
+                        <p class="text-muted">Stock: @product.Stock</p>
+                        <p><strong>Category:</strong> @(product.Category?.Name ?? "N/A")</p>
+                    </div>
+                </div>
+            </div>
         }
-    </ul>
+    </div>
 }
 
 @code {
@@ -29,17 +47,29 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        if (!Auth.IsLoggedIn || Auth.Role != "Admin")
+        {
+            return;
+        }
+
         try
         {
-            var response = await HttpClient.GetAsync("api/productlist");
+            var response = await HttpClient.GetAsync($"api/productlist?role={Auth.Role}");
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();
-            products = System.Text.Json.JsonSerializer.Deserialize<Product[]>(json);
+
+            products = System.Text.Json.JsonSerializer.Deserialize<Product[]>(json,
+            new System.Text.Json.JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+
+            Console.WriteLine($"✅ Fetched {products?.Length ?? 0} products successfully.");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error: {ex.Message}");
+            Console.WriteLine($"❌ Error fetching products: {ex.Message}");
         }
     }
 

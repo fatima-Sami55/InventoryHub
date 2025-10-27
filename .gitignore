@@ -1,0 +1,36 @@
+# Build outputs
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code settings
+.vscode/
+
+# NuGet packages
+*.nupkg
+packages/
+.nuget/
+
+# EF Core Migrations (optional: only ignore if you don't want to version them)
+Migrations/
+
+# ASP.NET temporary files
+wwwroot/
+
+# Logs
+*.log
+
+# Secrets & config
+appsettings.*.json
+secrets.json
+
+# Test results
+TestResults/
+*.trx
+

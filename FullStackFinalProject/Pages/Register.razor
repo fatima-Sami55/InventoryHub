@@ -1,0 +1,51 @@
+@page "/register"
+@using FullStackFinalProject.Services
+@inject AuthService Auth
+@inject NavigationManager Nav
+
+<h3>Register</h3>
+
+<div class="card p-4 shadow-sm" style="max-width: 400px;">
+    <div class="mb-3">
+        <label>Username</label>
+        <input @bind="username" class="form-control" placeholder="Choose a username" />
+    </div>
+
+    <div class="mb-3">
+        <label>Email</label>
+        <input @bind="email" class="form-control" type="email" placeholder="Enter your email" />
+    </div>
+
+    <div class="mb-3">
+        <label>Password</label>
+        <input @bind="password" class="form-control" type="password" placeholder="Enter your password" />
+    </div>
+
+    <button class="btn btn-success w-100" @onclick="HandleRegister">Register</button>
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger mt-3">@errorMessage</div>
+    }
+</div>
+
+@code {
+    private string username = "";
+    private string email = "";
+    private string password = "";
+    private string? errorMessage;
+
+    private async Task HandleRegister()
+    {
+        bool success = await Auth.Register(username, email, password);
+
+        if (success)
+        {
+            Nav.NavigateTo("/login");
+        }
+        else
+        {
+            errorMessage = "Email already exists!";
+        }
+    }
+}
