@@ -48,3 +48,18 @@ InventoryHub helps users manage inventory items with categorized data, secure lo
 - Debugging and vulnerability fixes assisted by Copilot.
 
 ---
+
+### Testing
+
+- Automated tests verify input validation, authentication, and API responses.
+- Security tests confirm prevention of SQL Injection and XSS attacks.
+- Copilot assisted in generating unit and integration tests.
+
+### Reflection
+
+- Throughout this project, Microsoft Copilot was used as a coding collaborator:
+- **Integration**: Suggested HTTP client syntax and API integration patterns.
+- **Debugging**: Helped identify CORS issues, malformed JSON, and routing errors.
+- **JSON Structuring**: Assisted in formatting nested category data.
+- **Optimization**: Recommended caching and code refactoring.
+- **Key takeaway**: Copilot accelerates development but should be used critically, not blindly.
