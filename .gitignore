@@ -1,36 +1,56 @@
-# Build outputs
-bin/
-obj/
-out/
-
-# User-specific files
+# ------------------------
+# Visual Studio / .NET
+# ------------------------
+.vs/
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
 
-# VS Code settings
-.vscode/
-
-# NuGet packages
-*.nupkg
-packages/
-.nuget/
-
-# EF Core Migrations (optional: only ignore if you don't want to version them)
-Migrations/
-
-# ASP.NET temporary files
-wwwroot/
-
-# Logs
+# Build results
+bin/
+obj/
+Debug/
+Release/
+*.dll
+*.exe
+*.pdb
+*.cache
 *.log
+*.ide
 
-# Secrets & config
-appsettings.*.json
-secrets.json
+# Rider / JetBrains
+.idea/
 
-# Test results
-TestResults/
-*.trx
+# ------------------------
+# Blazor / Web / Frontend
+# ------------------------
+wwwroot/_framework/
+wwwroot/**/*.blazor.boot.json
+wwwroot/**/*.blazor.boot.json.gz
+wwwroot/**/*.staticwebassets.*
 
+# ------------------------
+# EF Core Migrations / DB
+# ------------------------
+Migrations/
+*.db
+*.db-journal
+
+# ------------------------
+# ASP.NET / App Settings
+# ------------------------
+appsettings*.json
+
+# ------------------------
+# Test Projects
+# ------------------------
+FullStackFinalProject.Tests/bin/
+FullStackFinalProject.Tests/obj/
+
+# ------------------------
+# Misc
+# ------------------------
+*.vsix
+*.nupkg
+*.snk
